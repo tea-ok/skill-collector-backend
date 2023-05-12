@@ -167,6 +167,14 @@ _Note: Has to contain `location`, and `skill_id`_
 
 -    When successful, returns status code `200 OK`
 
+## Scripts
+
+I also created some Python scripts to aid in the development of the application. These scripts are located in the `scripts` folder:
+
+- [`csv-exporter.py`](./scripts/csv-exporter.py) - This script exports the data from the `user_skills` table in the database to a CSV file. This script is useful for backing up the data in the database and for importing the data into other applications.
+
+- [`csv-importer.py`](./scripts/csv-importer.py) - This script imports the skill data from a CSV file into the `skills` table in the database. This script is useful for adding new skills to the database, if more SFIA skills are added in the future.
+
 ## Contributors:
 
 -    Taavi Kalaluka - Back-end Engineer
