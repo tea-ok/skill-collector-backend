@@ -52,7 +52,9 @@ This database design allows users of the web app to select SFIA and soft skills 
 
 ### **POST** Login (`http://localhost:5000/auth/login`)
 
-Logs the user into the application by checking the given hash value against the database.
+Logs the user into the application by checking the given hash value against the database. Express session cookies are employed for user authorization. This approach offers several advantages that enhance the security and user experience of the application.
+
+Express session cookies enable the server to maintain session state and authenticate user requests. When a user logs in, a unique session identifier is generated and stored as a cookie in the user's browser. This session identifier is sent with subsequent requests, allowing the server to identify and authenticate the user.
 
 _Note: None of the other routes will work without a user being logged in, you'll receive an error code 401 (Unauthorized)_
 
@@ -83,7 +85,7 @@ Invalid credentials
 
 ### **POST** Logout (`http://localhost:5000/auth/logout`)
 
-Logs the user out of the application.
+This clears the session cookie and logs the user out of the application.
 
 #### How to use:
 
@@ -99,7 +101,7 @@ Logs the user out of the application.
 
 ### **GET** All Skills (`http://localhost:5000/skills`)
 
-Gets all the skills from the database.
+Gets all the skills from the `skills` table in the database.
 
 #### How to use:
 
@@ -135,7 +137,7 @@ Unauthorized
 
 ### **PUT** User Skills (`http://localhost:5000/userSkills/update`)
 
-Updates the user's selected skills to reflect the updated selections
+Updates the user's selected skills in the `user_skills` table to reflect the updated selections. Skills not present in the request are deleted from the database, and new ones are added.
 
 #### How to use:
 
@@ -161,7 +163,7 @@ Updates the user's selected skills to reflect the updated selections
 
 ... etc
 
-_Note: Has to contain `location`, `skill_code`, and `skill_id`_
+_Note: Has to contain `location`, and `skill_id`_
 
 -    When successful, returns status code `200 OK`
 
